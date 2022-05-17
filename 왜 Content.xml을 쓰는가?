@@ -1,0 +1,15 @@
+프로젝트를 실행시키면 
+web.xml이 제일 먼저 실행 ->  resource-ref를 설정했기에 해당 하는 이름의 DB를 찾는다. 
+이 내용은 어플리케이션의 모든 정보가 저장된 Context.xml에 존재한다. 
+
+그중에서 내가 필요로 하는 DB와 
+등록된 자원을 구분하기 위해서 이름으로 찾는데 일치하는 존재를 찾아서 
+해당 파일의 connection pool을 찾아내서 쓴다
+
+Context.xml에서의 MariaDB 데이터 타입은 data source이고
+총 100개까지 존재한다
+context.xml의 해당 하는 모든 내용들을 new해서
+100개의 커넥션을 가지고 있고
+나는 필요할때 가져다가 쓴다.
+이게 Context에 있고 이름으로 찾겠다는 것이다
+타입이 DataSource인데 그 안의 커넥션을 찾아야 하기에 getConnection을 한다
